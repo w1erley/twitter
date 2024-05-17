@@ -4,14 +4,16 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUserRequest extends FormRequest
+use function PHPSTORM_META\map;
+
+class SignupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,16 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "username" => 'required|min:3|max:20|unique:users,username',
+            "name" => 'required|min:3|max:40',
+            "email" => 'required|email',
+            "password" => [
+                'required',
+                'confirmed',
+                // Password::min(8)
+                //     ->letters()
+                //     ->symbols()
+            ]
         ];
     }
 }

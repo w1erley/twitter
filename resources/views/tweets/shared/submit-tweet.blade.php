@@ -1,4 +1,4 @@
-@auth()
+@auth
 <h4> Share your tweets </h4>
 <div class="row">
     <form action="{{ route('tweets.store') }}" method="post">

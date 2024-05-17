@@ -16,7 +16,7 @@
                     <a class="{{ (Route::is('register')) ? 'fw-bold' : 'font-weight-light'}} nav-link" href="{{ route('register') }}">Register</a>
                 </li>
                 @endguest
-                @auth()
+                @auth
                 @if (Auth::user()->is_admin)
                 <li class="nav-item me-4">
                     <a class="{{ (Route::is('profile')) ? 'fw-bold' : 'font-weight-light'}} nav-link fw-light" href="{{ route('admin.dashboard') }}">
