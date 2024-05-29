@@ -87,4 +87,18 @@ class User extends Authenticatable
     public function likesTweet(Tweet $tweet) {
         return $this->likes()->where('tweet_id', $tweet->id)->exists();
     }
+
+    public function getFollowersCountAttribute() {
+        return $this->followers()->count();
+    }
+
+    public function getIsFollowedAttribute() {
+        $user = auth()->user();
+        if (!$user) {
+            return false;
+        }
+        return $user->follows($this);
+    }
+
+    protected $appends = ['followers_count', 'is_followed'];
 }

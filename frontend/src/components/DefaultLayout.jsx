@@ -11,7 +11,7 @@ export default function DefaultLayout() {
     const {user, token, notification, setUser, setToken} = useStateContext();
 
     if (!token) {
-        return <Navigate to="/login"/>
+        return <Navigate to="/login"/> //can change to http only cookie
     }
 
     const onLogout = (ev) => {

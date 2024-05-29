@@ -27,4 +27,18 @@ class Tweet extends Model
     public function likes() {
         return $this->belongsToMany(User::class, 'like_tweet')->withTimestamps();
     }
+
+    public function getLikesCountAttribute() {
+        return $this->likes()->count();
+    }
+
+    public function getIsLikedAttribute() {
+        $user = auth()->user();
+        if (!$user) {
+            return false;
+        }
+        return $this->likes()->where('user_id', $user->id)->exists();
+    }
+
+    protected $appends = ['likes_count', 'is_liked'];
 }
