@@ -4,10 +4,17 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\UserResource;
 
+use App\Events\ProfileUpdated;
+
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+
+use Illuminate\Support\Facades\Gate;
+
+
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -17,6 +24,25 @@ class UserController extends Controller
     public function index()
     {
         //
+    }
+
+    public function getByUsername($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        return response()->json($user);
+    }
+
+    public function getCurrentUser(Request $request) {
+        /**
+         * @var User $user
+         */
+        $user = auth()->user();
+
+        if (!$user) {
+            return response()->json(['message' => 'Unauthenticated.'], 401);
+        }
+
+        return response()->json(['user' => $user], 200);
     }
 
     /**
@@ -40,7 +66,20 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        // /**
+        //  * @var User $user
+        //  */
+        // $user = auth()->user();
+
+        Gate::authorize("update", $user);
+
+        $validated = $request->validated();
+
+        $user->update($validated);
+
+        ProfileUpdated::dispatch($user);
+
+        return response()->json($user);
     }
 
     /**

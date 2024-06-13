@@ -1,0 +1,85 @@
+@import url(https://fonts.bunny.net/css?family=alata:400);
+
+* {
+    font-family: 'Alata', sans-serif;
+    color: #e8e6e3 !important;
+    scrollbar-color: #454a4d #202324;
+}
+
+body {
+    background-color: rgb(17, 18, 19) !important;
+}
+
+.card {
+    background-color: rgb(24, 26, 27) !important;
+    border: 1px solid rgba(140, 130, 115, 0.17);
+}
+
+.card-header, .card-footer {
+    background-color: rgb(30, 33, 34) !important;
+    border: 1px solid rgba(140, 130, 115, 0.17);
+}
+
+.form-control {
+    background-color: rgb(24, 26, 27) !important;
+    border: 1px solid rgba(140, 130, 115, 0.17);
+}
+
+.navbar {
+    background-color: rgb(17, 18, 19) !important;
+    border-bottom: 1px solid rgba(140, 130, 115, 0.17);;
+}
+
+/* .navbar-icon {
+    font-weight: 900;
+} */
+
+.nav-link {
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.pagination .page-link {
+    background-color: #375a7f;
+}
+
+.pagination .active .page-link {
+    background-color: #3e6691;
+}
+
+.pagination .disabled .page-link {
+    background-color: #2a4664;
+}
+
+.pagination .disabled:hover .page-link {
+    background-color: #2a4664 !important;
+}
+
+.pagination .page-item:hover .page-link{
+    background-color: #3e6691;
+}
+
+.btn-dark {
+    background-color: #181A1B !important;
+}
+
+.modal-space {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .modal-in-content {
+    background-color: rgb(24, 26, 27);
+    width: 500px;
+    min-width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+  }

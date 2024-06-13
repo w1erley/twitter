@@ -48,6 +48,9 @@ class TweetController extends Controller
 
         $tweet = Tweet::create($validated);
 
+        $tweet->load('user');
+        $tweet->load('comments');
+
         return response(compact('tweet'));
     }
 

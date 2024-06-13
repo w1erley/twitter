@@ -62,8 +62,4 @@ class AuthController extends Controller
         $user->currentAccessToken()->delete();
         return response('', 204);
     }
-
-    public function test(Request $request) {
-        return(200);
-    }
 }

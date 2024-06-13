@@ -9,7 +9,7 @@ class Tweet extends Model
 {
     use HasFactory;
 
-    protected $with = ["user:id,name,image", "comments.user:id,name,image"];
+    protected $with = ["user:id,name,image,username", "comments.user:id,name,image,username"];
 
     protected $fillable = [
         'content',

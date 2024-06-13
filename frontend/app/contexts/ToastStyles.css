@@ -1,0 +1,12 @@
+.dark-toast {
+    background-color: #181A1B !important;
+    color: #fff !important;
+}
+
+.dark-toast .rht-close-button {
+    color: #fff !important;
+}
+
+.dark-toast .rht-progress-bar {
+    background-color: #bbb !important;
+}

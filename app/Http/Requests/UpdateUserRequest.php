@@ -11,7 +11,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name" => "required|min:1|max:20",
+            "bio" => "nullable|min:3|max:240",
+            "image"=> "nullable|min:3|max:240",
         ];
     }
 }
